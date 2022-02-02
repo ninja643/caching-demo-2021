@@ -3,6 +3,7 @@ package rs.ac.ni.pmf.web.caching2021.cachingdemo.repository;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -57,13 +58,13 @@ public class SimpleBookRepository implements BookRepository, InitializingBean
 			return null;
 		}
 
-		throw new RuntimeException("Error");
+//		throw new RuntimeException("Error");
 
-//		log.info("Updating title for {}", isbn);
-//		final Book newBook = new Book(isbn, title);
-//		_books.put(isbn, newBook);
-//		log.info("Updated book: {}", newBook);
-//		return newBook;
+		log.info("Updating title for {}", isbn);
+		final Book newBook = new Book(isbn, title);
+		_books.put(isbn, newBook);
+		log.info("Updated book: {}", newBook);
+		return newBook;
 	}
 
 	@Override
